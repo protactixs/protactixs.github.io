@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Protactixs: Weekend IT support for small businesses." />
+  <title>Protactixs | Weekend IT Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --dark: #111827;
+      --light: #f9fafb;
+      --text: #1f2937;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text);
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        display: none;
+        padding: 1rem;
+      }
+
+      nav.nav-shown {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .feature-card img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-us ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .why-us li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .why-us li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    .testimonials {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 2rem;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .testimonial {
+      background: #1f2937;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--dark);
+      color: white;
+      padding: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 href="#">Protactixs</h1>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav id="nav-links">
+      <a href="#services">Services</a>
+      <a href="#whyus">Why Us</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Weekend IT Support, Pro Results</h2>
+    <p>Tech support that works around your schedule. Serving law firms, tax offices, and small businesses.</p>
+  </section>
+
+  <section class="section" id="services">
+    <h3>Our Services</h3>
+    <div class="features">
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=60" alt="Remote Support">
+        <h4>Remote IT Support</h4>
+        <p>Weekend assistance that fixes problems fast, without disrupting your weekdays.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1556155092-8707de31f9c4?auto=format&fit=crop&w=800&q=60" alt="Endpoint Security">
+        <h4>Endpoint Security</h4>
+        <p>Antivirus & system hardening using Microsoft Defender for Business.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1556761175-129418cb2dfe?auto=format&fit=crop&w=800&q=60" alt="Reports">
+        <h4>Monthly Health Reports</h4>
+        <p>Track patch status, uptime, and recommendations for every endpoint.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-us" id="whyus">
+    <h3>Why Choose Protactixs?</h3>
+    <ul>
+      <li>Weekend availability—no weekday disruption</li>
+      <li>Proactive monthly health reports</li>
+      <li>Affordable support packages</li>
+    </ul>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h3 style="text-align:center;">Client Testimonials</h3>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <p>“Protactixs got our office back online within an hour—on a Sunday. Amazing support!”</p>
+        <strong>Sarah</strong><br><small>Tax Consultant</small>
+      </div>
+      <div class="testimonial">
+        <p>“We finally have peace of mind with our systems thanks to their weekend health checks.”</p>
+        <strong>James</strong><br><small>Law Office Admin</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h3>Ready to Get Started?</h3>
+    <p>Fill out our onboarding form and we’ll take it from there.</p>
+    <a href="https://forms.gle/kG29cRYTGaEkNo4k9">Start Onboarding</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Protactixs. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("nav-shown");
+    }
+  </script>
+</body>
+</html>
